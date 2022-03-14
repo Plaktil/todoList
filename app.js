@@ -12,7 +12,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public")); 
 app.use(bodyParser.urlencoded({extended: true}));
-mongoose.connect("mongodb://localhost:27017/todolistDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://Admin-Sam:Th3Dw3ll3r@cluster0.fjxyy.mongodb.net/todoListDB?retryWrites=true&w=majority", {useNewUrlParser: true});
 mongoose.pluralize(null);
 
 
@@ -139,6 +139,8 @@ app.post("/delete", function(req, res){
     });
 });
 
-app.listen(3000, function(){
-    console.log("Listening on port 3000...");
-});
+let port = process.env.PORT;
+if (port === null || port === "") {
+    port = 3000;
+}
+app.listen(port);
