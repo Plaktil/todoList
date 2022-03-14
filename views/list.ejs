@@ -1,0 +1,41 @@
+<!--ejs allows us to include other files to our content.
+If we want to include a header and a footer, we use the <.%- tag to include them.-->
+
+<%- include("header") %>
+
+    <div class="box" id="heading">
+        <h1>
+            <form action="/changelist" method="post">
+                <input list="lists" type="text" name="changeTo" placeholder="<%= listTitle %>" autocomplete="off">
+            </form>
+        </h1>
+    </div>
+
+    <datalist id="lists">
+        <% listList.forEach(function(list){ %>
+            <option value="<%= list %>">
+        <% }); %>
+    </datalist>
+    
+
+    <div class="box">
+        <% listItems.forEach(function(item){ %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="hidden" name="listTitle" value="<%=listTitle%>"> <!--Hidden inputs are frequently used to carry additionnal info to -->
+                                                                                  <!--the server side, often in a user generated update request.-->
+                    <input type="checkbox" value="<%= item._id %>" name="checkbox" onchange="this.form.submit()"> <!--Submits when the box changes state.-->
+                    <p><%= item.name %></p>
+                </div>
+            </form>
+        <% }); %>
+    </div>
+
+    <div class="box">
+        <form class="item" action="/" method="post">
+            <input type="text" name="newListElem" placeholder="New Item" autofocus autocomplete="off">
+            <button name="listTitle" value="<%= listTitle %>" type="submit">+</button> <!--Here we send the list title with the form so that the-->
+        </form>                                                           <!--app knows which list to put the new element into, and redirect us to the right list-->
+    </div>
+
+<%- include("footer") %>

@@ -1,0 +1,19 @@
+<!--In an ejs file, you essentially write valid html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<body>
+
+    <% if (kindOfDay === "Saturday" || kindOfDay === "Sunday"){ %> <!--<.% tag lets you do control-flow js in a html file-->
+        <h1 style="color: blue"><%= kindOfDay %> To Do List</h1> <!--and only goes around the parts that are NOT html, -->
+    <% } else { %>
+        <h1 style="color: red"><%= kindOfDay %> To Do List</h1>
+    <% }; %> <!--but it needs to be around EVERY bit of js and EVERY lines of a block-->
+
+</body>
+</html>
