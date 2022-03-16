@@ -3,3 +3,4 @@
 **/.pwd
 npm-debug.log
 /*.env
+.heroku_url

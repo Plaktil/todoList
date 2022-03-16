@@ -12,7 +12,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public")); 
 app.use(bodyParser.urlencoded({extended: true}));
-mongoose.connect("mongodb+srv://Admin-Sam:Th3Dw3ll3r@cluster0.fjxyy.mongodb.net/todoListDB?retryWrites=true&w=majority", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://Admin-Sam:xdz5wbm6uak.UAP6yna@cluster0.fjxyy.mongodb.net/todoListDB?retryWrites=true&w=majority", {useNewUrlParser: true});
 mongoose.pluralize(null);
 
 
