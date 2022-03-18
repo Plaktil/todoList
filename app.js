@@ -2,6 +2,7 @@
 
 
 /*****************Imports****************/
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -12,7 +13,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public")); 
 app.use(bodyParser.urlencoded({extended: true}));
-mongoose.connect("mongodb+srv://Admin-Sam:xdz5wbm6uak.UAP6yna@cluster0.fjxyy.mongodb.net/todoListDB?retryWrites=true&w=majority", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://" + process.env.MONGO_DB_LOGIN + "@cluster0.fjxyy.mongodb.net/todoListDB?retryWrites=true&w=majority", {useNewUrlParser: true});
 mongoose.pluralize(null);
 
 
@@ -143,4 +144,6 @@ let port = process.env.PORT;
 if (port === null || port === "") {
     port = 3000;
 }
-app.listen(port);
+app.listen(port, function(){
+    console.log("Listening on port 3000...");
+});
